@@ -13,6 +13,7 @@ js/main.js                  Page rendering, navigation, and theme preference
 js/github.js                Public GitHub repository integration
 assets/CV_ Maximiliano_Sá.pdf  Downloadable CV
 assets/favicon.svg           Small SVG site icon
+assets/og-image.png          1200 × 630 social sharing preview image
 .nojekyll                   Disables Jekyll processing on Pages
 .gitignore                  Keeps local secrets and development artifacts out of Git
 ```
@@ -22,6 +23,10 @@ assets/favicon.svg           Small SVG site icon
 Most content is in `js/profile.js`. Update the name, location, headline, biography, education, certifications, experience, activities, and skill groups there. Education includes the Information Security MSc (expected July 2028) and the Computer Science BSc, based on the supplied CV. The Pedagogical Department activity end date can also be edited there.
 
 The `linkedinUrl` and `email` fields contain your configured public links. Edit them in `profile.js` if either changes.
+
+## Social sharing preview
+
+The homepage Open Graph and Twitter metadata use `assets/og-image.png` (1200 × 630 pixels) at the canonical GitHub Pages URL. To replace the preview, overwrite that PNG with a new image at the same path and dimensions; the absolute image URL in `index.html` will continue to work at the repository-specific Pages address. The image is served as a static project asset, with no external image host or build step.
 
 The theme follows each browser/device's `prefers-color-scheme` setting by default and updates when that setting changes. The theme control can switch to a manual override; pressing it again restores system-following mode. Manual preference is stored only in that browser's local storage, while automatic mode adapts independently on each device.
 
