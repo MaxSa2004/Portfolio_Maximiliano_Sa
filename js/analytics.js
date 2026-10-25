@@ -1,4 +1,5 @@
 const MEASUREMENT_ID = "G-8SV2XYRRH7";
+const COOKIE_PATH = "/Portfolio_Maximiliano_Sa/";
 const CONSENT_KEY = "portfolio-analytics-consent-v1";
 const SESSION_REVOKED_KEY = "portfolio-analytics-session-revoked-v1";
 const DENIED = { analytics_storage: "denied", ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied" };
@@ -27,16 +28,19 @@ let loaded = false;
 let scriptLoaded = false;
 let configured = false;
 let pageViewPending = false;
+let pageViewSent = false;
 let accepted = false;
 let dataLayer;
 
 function flushPendingPageView() {
-  if (!accepted || !scriptLoaded || !configured || !pageViewPending) return;
+  if (!accepted || !scriptLoaded || !configured || !pageViewPending || pageViewSent) return;
   pageViewPending = false;
+  pageViewSent = true;
   window.gtag("event", "page_view");
 }
 
 function queuePageView() {
+  if (pageViewSent) return;
   pageViewPending = true;
   if (!scriptLoaded) return;
   if (document.readyState === "complete") flushPendingPageView();
@@ -51,7 +55,9 @@ function configureAnalytics() {
     window.gtag("config", MEASUREMENT_ID, {
       allow_google_signals: false,
       allow_ad_personalization_signals: false,
-      send_page_view: false
+      send_page_view: false,
+      cookie_domain: "none",
+      cookie_path: COOKIE_PATH
     });
     configured = true;
   }
@@ -97,10 +103,13 @@ function loadAnalytics() {
 function removeAnalyticsCookies() {
   try {
     const names = document.cookie.split(";").map(cookie => cookie.trim().split("=")[0]).filter(name => /^_ga(?:_|$)/.test(name));
-    const paths = new Set(["/", location.pathname.slice(0, location.pathname.lastIndexOf("/") + 1) || "/"]);
-    names.forEach(name => paths.forEach(path => {
-      document.cookie = `${name}=; Max-Age=0; path=${path}; SameSite=Lax`;
-    }));
+    const paths = new Set([COOKIE_PATH, "/", location.pathname.slice(0, location.pathname.lastIndexOf("/") + 1) || "/"]);
+    // Clear both host-only cookies created by cookie_domain: "none" and
+    // domain cookies created by the previous automatic-domain setting.
+    const domains = ["", `; domain=${location.hostname}`];
+    names.forEach(name => paths.forEach(path => domains.forEach(domain => {
+      document.cookie = `${name}=; Max-Age=0; path=${path}; SameSite=Lax${domain}`;
+    })));
   } catch {}
 }
 
