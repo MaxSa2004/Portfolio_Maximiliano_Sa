@@ -7,6 +7,10 @@
 @media(max-width:360px){.hero h1{font-size:39px}.hero-socials{gap:14px;flex-wrap:wrap}.social-note{width:100%}.contact-section h2{font-size:46px}.project-actions{gap:14px}.project-actions .button{gap:8px;padding:0 10px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 [hidden]{display:none!important}
+.consent-banner{position:fixed;z-index:30;left:20px;right:20px;bottom:20px;max-width:920px;margin:0 auto;padding:18px 21px;display:flex;align-items:center;justify-content:space-between;gap:22px;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:8px;box-shadow:0 12px 44px #0005}
+.consent-copy{max-width:600px}.consent-copy .eyebrow{color:var(--accent);margin:0 0 3px;font-size:9px}.consent-copy p:not(.eyebrow){margin:0;color:var(--muted);font-size:12px;line-height:1.6}.consent-copy a,.privacy-content a{color:var(--accent);text-decoration:underline;text-underline-offset:3px}.consent-actions{display:flex;gap:9px;flex-shrink:0}.consent-actions .button{cursor:pointer;min-height:40px;padding:0 13px;gap:0;font-size:11px}.site-footer{flex-wrap:wrap}
+.consent-actions .button-primary,.consent-actions .button-secondary{color:var(--text);background:var(--surface-2);border:1px solid var(--line)}.consent-actions .button:hover{border-color:var(--accent);background:var(--surface)}.consent-storage-warning{flex:0 0 100%;margin:0;color:var(--warm);font-size:11px;line-height:1.5}
+@media(max-width:650px){.consent-banner{left:12px;right:12px;bottom:12px;padding:15px;display:block}.consent-copy p:not(.eyebrow){font-size:12px}.consent-actions{display:grid;grid-template-columns:1fr 1fr;margin-top:13px}.consent-actions .button{width:100%;min-height:43px}.site-footer>div{flex-wrap:wrap;gap:10px 15px}}
 body{font-size:16px}
 .hero-description{font-size:14px}
 .about-aside{font-size:13px}
@@ -77,3 +81,19 @@ main,.site-footer{position:relative;z-index:1}
 @media(max-width:850px){.pacman-track{width:min(430px,86vw);gap:8px}.pacman-character{width:50px;height:50px;flex-basis:50px}.pacman-body{width:47px;height:47px}.pacman-ground{top:calc(50% + 36px)}}
 @media(max-width:650px){.pacman-background{opacity:.16}.pacman-track{width:min(340px,90vw);gap:7px}.pacman-character{width:42px;height:42px;flex-basis:42px}.pacman-body{width:39px;height:39px}.pacman-ground{top:calc(50% + 32px);height:1px}.ghost-procession{--ghost-near:-6px;--ghost-far:24px}}
 @media(prefers-reduced-motion:reduce){.pacman-track{animation:none;left:50%;transform:translate3d(-50%,-50%,0);will-change:auto}.pacman-body{animation:none;clip-path:polygon(50% 50%,100% 8%,91% 9%,76% 1%,59% 0,41% 2%,24% 9%,10% 23%,2% 40%,2% 60%,10% 77%,24% 91%,41% 98%,59% 100%,76% 99%,91% 91%,100% 92%)}.pacman-trail i{animation:none;opacity:.7}.pacman-trail i:nth-child(1){left:-14px}.pacman-trail i:nth-child(2){left:-28px}.pacman-trail i:nth-child(3){left:-42px}.pacman-trail i:nth-child(4){left:-56px}.pacman-trail i:nth-child(5){left:-70px}.ghost-procession,.ghost{animation:none;transform:none}.ghost-leg{animation:none}}
+
+.privacy-header-actions{display:flex;align-items:center;gap:20px}
+.privacy-page{padding-top:clamp(64px,10vw,116px);padding-bottom:clamp(64px,10vw,110px);max-width:920px}
+.privacy-page-header{max-width:760px;margin-bottom:44px}
+.privacy-page-header .eyebrow{margin-bottom:12px;color:var(--accent)}
+.privacy-page h1{font-size:clamp(40px,6vw,64px);line-height:1.1;margin-bottom:18px}
+.privacy-page-header>p:last-child{max-width:680px;color:var(--muted);font-size:16px;line-height:1.8}
+.privacy-content{max-width:760px}
+.privacy-section{padding:28px 0;border-top:1px solid var(--line)}
+.privacy-section h2{margin:0 0 14px;color:var(--text);font-size:20px;letter-spacing:-.035em}
+.privacy-section p{margin:0 0 13px;color:var(--muted);font-size:15px;line-height:1.85}
+.privacy-section p:last-child{margin-bottom:0}
+.privacy-section strong{color:var(--text)}
+.privacy-section code{font-family:var(--mono);font-size:.9em;color:var(--text);overflow-wrap:anywhere}
+.privacy-footer{border-top:1px solid var(--line)}
+@media(max-width:650px){.privacy-header-actions{gap:13px}.privacy-header-actions .text-link{font-size:11px}.privacy-page{padding-top:50px}.privacy-page-header{margin-bottom:30px}.privacy-page-header>p:last-child{font-size:15px}.privacy-section{padding:22px 0}.privacy-section h2{font-size:18px}.privacy-section p{font-size:14px;line-height:1.8}}

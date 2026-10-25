@@ -1,4 +1,5 @@
 import { profile } from "./profile.js";
+import "./analytics.js";
 
 const $ = (selector, root = document) => root.querySelector(selector);
 const el = (tag, className, text) => {
